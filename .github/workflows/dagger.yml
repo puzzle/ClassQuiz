@@ -16,5 +16,5 @@ jobs:
         with:
           version: "latest"
           verb: call
-          module: ClassQuiz
+          module: .
           args: ci --context=. export --path=.
