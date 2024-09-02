@@ -5,7 +5,7 @@ on:
 
 jobs:
   scan:
-    name: scan
+    name: vulnerability-scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,4 +17,4 @@ jobs:
           version: "latest"
           verb: call
           module: .
-          args: vulnerability_scan --context=. export --path=.
+          args: vulnerability-scan --context=. export --path=.
