@@ -8,19 +8,14 @@ jobs:
     name: vulnerability-scan
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
-      - name: Call Dagger Function
+      - name: scan
         uses: dagger/dagger-for-github@v6
         with:
           version: "latest"
           verb: call
           module: .
           args: vulnerability-scan --context=. export --path=.
-      - name: Add
-        run: git add scans
-      - name: Push
-        uses: github-actions-x/commit@v2.9
-        with:
-          commit-message: "Add scan results"
-          files: scans/
+      - name: commit and push
+        run: git add scans && git commit -m "Update Scan results" && git push
