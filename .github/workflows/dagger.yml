@@ -1,0 +1,20 @@
+name: dagger
+on:
+  push:
+    branches: [techlab]
+
+jobs:
+  scan:
+    name: scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Call Dagger Function
+        uses: dagger/dagger-for-github@v6
+        with:
+          version: "latest"
+          verb: call
+          module: ClassQuiz
+          args: ci --context=. export --path=.
