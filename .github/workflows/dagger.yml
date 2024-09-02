@@ -17,4 +17,4 @@ jobs:
           version: "latest"
           verb: call
           module: .
-          args: ci --context=. export --path=.
+          args: vulnerability_scan --context=. export --path=.
