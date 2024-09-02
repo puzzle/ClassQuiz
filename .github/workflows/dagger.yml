@@ -17,8 +17,10 @@ jobs:
           verb: call
           module: .
           args: vulnerability-scan --context=. export --path=.
+      - name: Add
+        run: git add scans
       - name: Push
         uses: github-actions-x/commit@v2.9
         with:
           commit-message: "Add scan results"
-          files: ./scans/backend.sarif ./scans/frontend.sarif
+          files: scans/
