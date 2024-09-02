@@ -10,11 +10,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      -
-        name: Call Dagger Function
+      - name: Call Dagger Function
         uses: dagger/dagger-for-github@v6
         with:
           version: "latest"
           verb: call
           module: .
           args: vulnerability-scan --context=. export --path=.
+      - name: Push
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'techlab'
+          commit-message: 'Add scan results'
+          force-add: 'true'
+          files: scans/
